@@ -23,32 +23,6 @@ export const dummyPrograms = [
     startDate: '2024-01-15',
     endDate: '2027-12-15',
   },
-  {
-    id: 2,
-    name: 'Web Development Certificate',
-    code: 'WDC2024',
-    duration: '6 Months',
-    totalCourses: 8,
-    completedCourses: 3,
-    progress: 38,
-    status: 'enrolled',
-    description: 'Focused program on modern web development technologies.',
-    startDate: '2024-03-01',
-    endDate: '2024-08-31',
-  },
-  {
-    id: 3,
-    name: 'Data Science Fundamentals',
-    code: 'DSF2024',
-    duration: '1 Year',
-    totalCourses: 12,
-    completedCourses: 0,
-    progress: 0,
-    status: 'available',
-    description: 'Introduction to data science and machine learning concepts.',
-    startDate: '2024-09-01',
-    endDate: '2025-08-31',
-  },
 ];
 
 export const dummyCourses = [

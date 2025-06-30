@@ -2,13 +2,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
-    Alert,
-    RefreshControl,
-    ScrollView,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Alert,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 import { Colors, getColorScheme } from '../../constants/colors';
 import { dummyPrograms, dummyUser } from '../../constants/dummyData';
@@ -214,36 +214,59 @@ const DashboardScreen = () => {
 
         {/* Quick Actions */}
         <View style={styles.section}>
-          <Text style={[styles.sectionTitle, { color: colors.text.primary }]}>
-            Quick Actions
-          </Text>
-          <View style={styles.quickActions}>
+          <Text style={[styles.sectionTitle, { color: colors.text.primary, marginBottom: 12 }]}>Quick Actions</Text>
+          <View style={styles.quickActionsGrid}>
+            {/* Assignments */}
             <TouchableOpacity 
               style={[styles.actionButton, { backgroundColor: Colors.primary[100] }]}
               onPress={() => router.push('/(tabs)/assignments')}
             >
-              <Ionicons name="doc-text" size={24} color={Colors.primary[600]} />
-              <Text style={[styles.actionText, { color: Colors.primary[600] }]}>
-                Assignments
-              </Text>
+              <Ionicons name="document-text" size={28} color={Colors.primary[600]} />
+              <Text style={[styles.actionText, { color: Colors.primary[600] }]}>Assignments</Text>
+              <Text style={styles.actionSubtitle}>View & submit</Text>
+              {/* Example badge for pending assignments */}
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>2</Text>
+              </View>
             </TouchableOpacity>
+            {/* Exams */}
             <TouchableOpacity 
               style={[styles.actionButton, { backgroundColor: Colors.success[100] }]}
               onPress={() => router.push('/(tabs)/exams')}
             >
-              <Ionicons name="checkmark-circle" size={24} color={Colors.success[600]} />
-              <Text style={[styles.actionText, { color: Colors.success[600] }]}>
-                Exams
-              </Text>
+              <Ionicons name="checkmark-circle" size={28} color={Colors.success[600]} />
+              <Text style={[styles.actionText, { color: Colors.success[600] }]}>Exams</Text>
+              <Text style={styles.actionSubtitle}>Upcoming & results</Text>
+              <View style={styles.badge}>
+                <Text style={styles.badgeText}>1</Text>
+              </View>
             </TouchableOpacity>
+            {/* Materials */}
             <TouchableOpacity 
               style={[styles.actionButton, { backgroundColor: Colors.warning[100] }]}
               onPress={() => router.push('/(tabs)/materials')}
             >
-              <Ionicons name="folder" size={24} color={Colors.warning[600]} />
-              <Text style={[styles.actionText, { color: Colors.warning[600] }]}>
-                Materials
-              </Text>
+              <Ionicons name="folder" size={28} color={Colors.warning[600]} />
+              <Text style={[styles.actionText, { color: Colors.warning[600] }]}>Materials</Text>
+              <Text style={styles.actionSubtitle}>Library & downloads</Text>
+            </TouchableOpacity>
+            {/* Courses */}
+            <TouchableOpacity 
+              style={[styles.actionButton, { backgroundColor: Colors.secondary[100] }]}
+              onPress={() => router.push('/(tabs)/courses')}
+            >
+              <Ionicons name="book" size={28} color={Colors.secondary[600]} />
+              <Text style={[styles.actionText, { color: Colors.secondary[600] }]}>Courses</Text>
+              <Text style={styles.actionSubtitle}>All enrolled</Text>
+            </TouchableOpacity>
+            {/* Programs */}
+            <TouchableOpacity 
+              style={[styles.actionButton, { backgroundColor: Colors.error[100] }]}
+              onPress={() => router.push('/(tabs)/programs')}
+            >
+              <Ionicons name="school" size={28} color={Colors.error[600]} />
+              <Text style={[styles.actionText, { color: Colors.error[600] }]}>Programs</Text>
+              <Text style={styles.actionSubtitle}>Your programs</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -382,22 +405,49 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 4,
   },
-  quickActions: {
+  quickActionsGrid: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
   },
   actionButton: {
     alignItems: 'center',
     padding: 16,
     borderRadius: 12,
-    minWidth: 80,
+    minWidth: 100,
+    width: '30%',
+    marginBottom: 16,
+    position: 'relative',
   },
   actionText: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontSize: 13,
+    fontWeight: '600',
     marginTop: 8,
     textAlign: 'center',
+  },
+  actionSubtitle: {
+    fontSize: 11,
+    color: '#888',
+    marginTop: 2,
+    textAlign: 'center',
+  },
+  badge: {
+    position: 'absolute',
+    top: 8,
+    right: 12,
+    backgroundColor: Colors.error[600],
+    borderRadius: 8,
+    paddingHorizontal: 5,
+    paddingVertical: 1,
+    minWidth: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  badgeText: {
+    color: '#fff',
+    fontSize: 10,
+    fontWeight: 'bold',
   },
 });
 

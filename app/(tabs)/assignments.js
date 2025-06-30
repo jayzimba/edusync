@@ -59,7 +59,7 @@ const AssignmentsScreen = () => {
   const handleAssignmentPress = (assignment) => {
     router.push({
       pathname: '/assignment-detail',
-      params: { assignmentId: assignment.id }
+      params: { id: assignment.id }
     });
   };
 

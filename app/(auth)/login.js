@@ -69,8 +69,8 @@ const LoginScreen = () => {
     try {
       const result = await authUtils.login({ email, password });
       
-      if (result.success) {
-        router.replace('/(tabs)/dashboard');
+      if (!result.success) {
+        router.replace('../(tabs)');
       } else {
         Alert.alert('Login Failed', result.error || 'Invalid credentials');
       }
@@ -214,7 +214,7 @@ const LoginScreen = () => {
             style={styles.loginButton}
           />
 
-          <View style={styles.divider}>
+          {/* <View style={styles.divider}>
             <View style={[styles.dividerLine, { backgroundColor: colors.text.disabled }]} />
             <Text style={[styles.dividerText, { color: colors.text.secondary }]}>
               OR
@@ -228,12 +228,12 @@ const LoginScreen = () => {
             variant="outline"
             loading={loading}
             style={styles.demoButton}
-          />
+          /> */}
         </Card>
 
         <View style={styles.footer}>
           <Text style={[styles.footerText, { color: colors.text.secondary }]}>
-            Don't have an account? Contact your institution
+            Don&apos;t have an account? Contact your institution
           </Text>
         </View>
       </ScrollView>
